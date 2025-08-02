@@ -1,0 +1,37 @@
+// class Solution {
+// public:
+//     ListNode* middleNode(ListNode* head) {
+//        ListNode* slow = head;
+//         ListNode* fast = head;
+        
+//         while (fast != nullptr && fast->next != nullptr) {
+//             slow = slow->next;
+//             fast = fast->next->next;
+//         }
+       
+//         return slow;
+//     }
+// };
+
+
+
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        // Step 1: Count the number of nodes
+        int count = 0;
+        ListNode* current = head;
+        while (current != NULL) {
+            count++;
+            current = current->next;
+        }
+
+        // Step 2: Move to the middle node
+        current = head;
+        for (int i = 0; i < count / 2; i++) {
+            current = current->next;
+        }
+
+        return current; // returns the second middle in case of even nodes
+    }
+};
