@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    int findLucky(vector<int>& arr) {
+        int freq[501] = {0}; // since 1 <= arr[i] <= 500 in constraints 501 bcz minimum element is 1 and array starts from index 0 so to have 500th index we will need array of 501
+
+        // Count frequency such that the number present at the index will be increamented when the number equivalent to that index will come.
+        for (int i = 0; i < arr.size(); i++) {
+            freq[arr[i]]++;
+        }
+
+        int ans = -1;
+        // Check for lucky numbers
+        for (int i = 1; i <= 500; i++) {
+            if (freq[i] == i) { // check the lucky number such that frequency will be same as index.
+                if (i > ans) ans = i; // keep largest number
+            }
+        }
+
+        return ans;
+    }
+};
+
+
